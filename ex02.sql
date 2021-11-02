@@ -20,7 +20,11 @@ CREATE TABLE `channels` (
 	FOREIGN KEY (`owner`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `chats`(
+CREATE TABLE `chats`(# --을 주석으로 알려주셨지만, 왜인지 저는 #을 써야 주석이 동작합니다..
+	#기본 키가 없다고 생각됩니다. unique하게 만들 수가 없는 것 같습니다.
+	#동일한 날짜에 동일한 채널에 동일한 사람이 동일한 메시지를 보내는 경우가 있을 수 있어 보입니다.
+	#또한 메시지의 삭제/수정 기능을 제공하는 경우에도 key가 변경될 수 있다는 점에서 primary key와는 거리가 있는 것 같습니다..
+
 	`chatmsg` varchar(100) NOT NULL,
 	`sender` varchar(20) NOT NULL,
 	`channel` varchar(40) NOT NULL,
